@@ -1,0 +1,25 @@
+name: AWS CLI test
+
+on:
+  push:
+    paths:
+      - '.github/workflows/aws_test.yml
+
+jobs:
+  aws-cli:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repo
+      uses: actions/checkout@v4
+
+    - name: Install AWS CLI
+      run: |
+        sudo apt update
+        sudo apt install -y aws cli
+        aws --version
+
+    - name: Run AWS CLI Command (dry run)
+      run: |
+        echo "Running AWS CLI..."
+        aws help | head -n 10
