@@ -3,6 +3,7 @@ name: AWS CLI test
 on:
   push:
     paths:
+      - 'hello.txt'
       - '.github/workflows/aws_test.yml'
 
 jobs:
@@ -19,7 +20,7 @@ jobs:
         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: ap-south-1
-        output: json
 
-    - name: Test AWS CLI
-      run: aws s3 ls
+    - name: Upload file to S3
+      run: |
+        aws s3 cp hello.txt s3://dev-cli-bucket-01/
