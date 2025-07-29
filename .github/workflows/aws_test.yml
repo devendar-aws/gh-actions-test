@@ -13,13 +13,13 @@ jobs:
     - name: Checkout repo
       uses: actions/checkout@v4
 
-    - name: Install AWS CLI
-      run: |
-        sudo apt update
-        sudo apt install aws cli -y
-        aws --version
+    - name: Set up AWS credentials
+      uses: aws-actions/configure-aws-credentials@v4
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: ap-south-1
+        output: json
 
-    - name: Run AWS CLI Command (dry run)
-      run: |
-        echo "Running AWS CLI..."
-        aws help | head -n 10
+    - name: Test AWS CLI
+      run: aws s3 ls
