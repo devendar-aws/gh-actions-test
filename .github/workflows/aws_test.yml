@@ -3,7 +3,7 @@ name: AWS CLI test
 on:
   push:
     paths:
-      - '.github/workflows/aws_test.yml
+      - '.github/workflows/aws_test.yml'
 
 jobs:
   aws-cli:
