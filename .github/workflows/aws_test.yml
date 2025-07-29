@@ -3,7 +3,7 @@ name: AWS CLI test
 on:
   push:
     paths:
-      - '.github/workflows/aws_test.yml
+      - '.github/workflows/aws_test.yml'
 
 jobs:
   aws-cli:
@@ -16,7 +16,7 @@ jobs:
     - name: Install AWS CLI
       run: |
         sudo apt update
-        sudo apt install -y aws cli
+        sudo apt install aws cli -y
         aws --version
 
     - name: Run AWS CLI Command (dry run)
